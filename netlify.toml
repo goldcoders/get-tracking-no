@@ -2,9 +2,9 @@
   functions = "functions"
   command = "#"
 [template.environment]
-  PAYMONGO_EMAIL = "Type Username"
-  PAYMONGO_PASS = "Type Password"
-  PAYMONGO_LIVE_MODE = "Set True If Paymongo is Live"
+  GOOGLE_SERVICE_ACCOUNT_EMAIL = "Google Service Account Email"
+  GOOGLE_SPREADSHEET_ID_FROM_URL = "Google Spreadsheet ID"
+  GOOGLE_PRIVATE_KEY = "Goggle Account Private Key"
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/:splat"
