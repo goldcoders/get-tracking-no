@@ -23,6 +23,26 @@ exports.handler = async (event) => {
       headers: { Allow: "POST" },
     };
   }
+
+  const { reference_no = null } = JSON.parse(event.body);
+
+  let validationError = [];
+
+  if (!reference_no) {
+    let error = {
+      field: "reference_no",
+      message: "No Reference No. Submitted, *reference_no* is required",
+    };
+    validationError.push(error);
+  }
+
+  if (validationError.length > 0) {
+    return {
+      statusCode: 422,
+      body: JSON.stringify({ errors: validationError }),
+    };
+  }
+
   try {
     const doc = new GoogleSpreadsheet(GOOGLE_SPREADSHEET_ID_FROM_URL);
 
@@ -33,26 +53,7 @@ exports.handler = async (event) => {
 
     await doc.loadInfo();
 
-    const sheet = doc.sheetsByIndex[0];
-
-    const { reference_no = null } = JSON.parse(event.body);
-
-    let validationError = [];
-
-    if (!reference_no) {
-      let error = {
-        field: "reference_no",
-        message: "No Reference No. Submitted, *reference_no* is required",
-      };
-      validationError.push(error);
-    }
-
-    if (validationError.length > 0) {
-      return {
-        statusCode: 422,
-        body: JSON.stringify({ errors: validationError }),
-      };
-    }
+    const sheet = doc.sheetsById[1];
 
     const rows = await sheet.getRows();
 
