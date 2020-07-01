@@ -31,7 +31,7 @@ exports.handler = async (event) => {
   if (!reference_no) {
     let error = {
       field: "reference_no",
-      message: "No Reference No. Submitted, *reference_no* is required",
+      message: "No Reference Number. Submitted",
     };
     validationError.push(error);
   }
