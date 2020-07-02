@@ -1,7 +1,7 @@
 {
   "name": "get-tracking-no-fn",
   "version": "1.0.0",
-  "description": "## Usage",
+  "description": "Get Tracking No.",
   "author": "GoldCoders",
   "license": "ISC",
   "dependencies": {
