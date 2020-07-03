@@ -74,7 +74,7 @@ exports.handler = async (event) => {
       deliverable = true
     } = rows[rowIndex];
 
-    if (!deliverable) {
+    if (deliverable === false) {
       return {
         statusCode: 400,
         body: JSON.stringify({
