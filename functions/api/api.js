@@ -71,10 +71,10 @@ exports.handler = async (event) => {
       tracking_no = "",
       courier = "",
       sent = null,
-      intangible = "no",
+      deliverable = true
     } = rows[rowIndex];
 
-    if (intangible == "yes" || intangible.toLowerCase == "yes") {
+    if (!deliverable) {
       return {
         statusCode: 400,
         body: JSON.stringify({
